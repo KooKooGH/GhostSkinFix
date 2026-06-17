@@ -30,4 +30,5 @@ namespace GhostLeviathanSkinFix.Patches
         }
     }
 }
-// under 100 lines, can you believe it?
+// Note this file is less than 100 lines, per Eldritch's suggestion, can you believe it?
+// Learned this technique from JBeast the Goat
