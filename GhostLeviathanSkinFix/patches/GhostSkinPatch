@@ -20,7 +20,7 @@ namespace GhostLeviathanSkinFix.Patches
 
             foreach (Material mat in renderer.materials)
             {
-                if (mat.name.Contains("ghost_leviathan_shell"))
+                if (mat.name.Contains("Ghost_Leviathan_shell"))
                 {
                     // set cull to zero, did anyone at UWE even test this before adding it?
                     mat.SetFloat("_MyCullVariable", 0f);
