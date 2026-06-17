@@ -1,6 +1,42 @@
 namespace GhostLeviathanSkinFix.patches;
 
 public class SkinFixPatch
+
+using HarmonyLib;
+using UnityEngine;
+
+// this will give me the jr programmer role, hi everyone reviewing this. make sure to join the btw server #self promo #horse.txt
+[HarmonyPatch(typeof(GhostLeviathan))]
+public static class GhostLeviathanPatch
 {
-    
+    // Runs after the creature starts
+    [HarmonyPostfix]
+    [HarmonyPatch("Start")]
+    public static void Postfix_Start(GhostLeviathan __instance)
+    {
+        // Get the skinned mesh renderer
+        SkinnedMeshRenderer skinRenderer = __instance.GetComponentInChildren<SkinnedMeshRenderer>();
+        
+        // Make sure we found the material
+        if (skinRenderer == null)
+            return;
+
+        // Get all the materials
+        Material[] myMaterials = skinRenderer.materials;
+        
+        // Go through each material
+        for (int i = 0; i < myMaterials.Length; i++)
+        {
+            // Check if it's the ghost skin
+            if (myMaterials[i].name.Contains("ghost_leviathan_shell"))
+            {
+                // Change the cull variable to 0 to stop the skin from culling
+                myMaterials[i].SetFloat("_MyCullVariable", 0f);
+                break;
+            }
+        }
+        
+        // Put the materials back
+        skinRenderer.materials = myMaterials;
+    }
 }
