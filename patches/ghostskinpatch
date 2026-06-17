@@ -1,1 +1,6 @@
+namespace GhostLeviathanSkinFix.patches;
 
+public class SkinFixPatch
+{
+    
+}
