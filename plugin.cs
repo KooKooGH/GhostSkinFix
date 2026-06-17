@@ -12,16 +12,16 @@ public class Plugin : BaseUnityPlugin
 
     private static Assembly Assembly { get; } = Assembly.GetExecutingAssembly();
 
+    // isn't my name so epic
     private const string PLUGIN_GUID = "com.KooKoo.GhostSkinFix";
     private const string PLUGIN_NAME = "GhostLeviathanSkinFix";
     private const string PLUGIN_VERSION = "1.0.0";
 
     private void Awake()
     {
-        // plugin startup logic
         Logger = base.Logger;
 
-        // register harmony patches, if there are any
+        // register harmony patches WOO!! Initialize!!
         Harmony.CreateAndPatchAll(Assembly, PLUGIN_GUID);
         Logger.LogInfo($"Plugin {PLUGIN_GUID} is loaded!");
     }
